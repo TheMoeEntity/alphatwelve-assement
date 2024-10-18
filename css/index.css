@@ -8,7 +8,9 @@ body {
   font-family: Arial, sans-serif;
   background-color: #ffff;
 }
-
+button {
+  cursor: pointer;
+}
 .container {
   display: flex;
   min-height: 100vh;
@@ -23,8 +25,10 @@ body {
   top: 0;
   left: 0;
   height: 100vh;
-  padding: 20px 10px;
-  transition: transform 0.3s ease;
+  padding: 20px 0px;
+  transition:
+    transform 0.3s ease,
+    width 0.3s ease;
 }
 
 .sidebar.hidden {
@@ -34,13 +38,16 @@ body {
 .sidebar .menu {
   list-style: none;
   padding: 0;
+  padding: 0 10px;
 }
+
 .sidebar .menu li {
   padding: 10px 20px;
   width: 100%;
   font-size: small;
   color: #334155;
 }
+
 .sidebar .logo {
   padding: 30px 20px;
   width: 100%;
@@ -58,17 +65,38 @@ body {
 .sidebar .menu li.active {
   background-color: #fcf7ff;
 }
+
 .sidebar .menu li a.active {
   color: #8576ff;
 }
+
 .sidebar .menu li a:hover {
   background-color: #f0f0f0;
 }
+
 .profile {
   display: flex;
   align-items: center;
   gap: 10px !important;
 }
+
+/* Sidebar when collapsed */
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .logo {
+  display: none;
+}
+
+.sidebar.collapsed .menu li a span:not(:first-child) {
+  display: none; /* Hide text */
+}
+
+.sidebar.collapsed ul li.profile small {
+  display: none;
+}
+
 /* Main content */
 .content {
   margin-left: 250px;
@@ -76,6 +104,12 @@ body {
   padding: 20px;
   transition: margin-left 0.3s ease;
 }
+
+/* Main content when sidebar is collapsed */
+.sidebar.collapsed ~ .content {
+  margin-left: 80px; /* Adjust content margin when sidebar is collapsed */
+}
+
 /* Header */
 .content header {
   background-color: #fff;
@@ -84,18 +118,52 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .content header h1 {
   font-weight: 100;
   font-size: 22px;
 }
+
 .content main {
   margin-top: 20px;
 }
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.close {
+  display: none;
+}
 
+/* Cards */
 .content .cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 5px;
+}
+
+.card h3 {
+  color: #64748b;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.card > div {
+  display: flex;
+}
+
+.card > div b {
+  font-size: 22px;
 }
 
 @media (min-width: 768px) {
@@ -110,12 +178,6 @@ body {
   }
 }
 
-.card {
-  background-color: #fff;
-  padding: 20px;
-  border:1px solid #f1f5f9;
-}
-
 /* Hamburger menu */
 #toggleSidebar {
   display: none;
@@ -123,6 +185,60 @@ body {
   font-size: 20px;
 }
 
+/* Transition for collapse button */
+#collapseBtn {
+  cursor: pointer;
+}
+/* FOOTER SECTION */
+/* Footer Navigation - Mobile Only */
+.mobile-footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #f1f5f9;
+  /* box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); */
+  z-index: 1000;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 0;
+  list-style: none;
+  margin: 0;
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.nav-link img {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-link span {
+  font-size: 12px;
+}
+
+.nav-item.active .nav-link {
+  border-top: 3px solid #8576ff;
+  color: #8576ff;
+}
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
@@ -138,5 +254,36 @@ body {
 
   #toggleSidebar {
     display: block;
+  }
+  .top-nav {
+    padding-right: 10px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 20px;
+  }
+  .close {
+    display: block;
+    font-size: 18px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f1f5f9;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Show footer navigation on mobile */
+@media (max-width: 768px) {
+  .mobile-footer {
+    display: block;
+  }
+  .sidebar {
+    width: 95%;
+  }
+  .content {
+    padding-bottom: 60px; /* Adjust content padding to account for footer height */
   }
 }

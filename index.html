@@ -12,61 +12,72 @@
     <div class="container">
       <!-- Sidebar -->
       <aside class="sidebar" id="sidebar">
-        <div class="logo">Full Logo</div>
+        <div class="top-nav">
+          <div class="logo">Full Logo</div>
+          <button id='closeBtn-side' class="close">&times;</button>
+        </div>
         <ul class="menu">
           <li class="active">
             <a href="#" class="active">
-              <span><img src="/images/home.png" alt="home icon" /></span
-              ><span>Home</span>
+              <span><img src="/images/home.png" alt="home icon" /></span>
+              <span class="menu-text">Home</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Events</span>
+          <li>
+            <a href="#">
+              <span><img src="/images/events.png" alt="events icon" /></span>
+              <span class="menu-text">Events</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/speaker.svg" alt="home icon" /></span
-              ><span>Speakers</span>
+          <li>
+            <a href="#">
+              <span><img src="/images/speaker.svg" alt="speakers icon" /></span>
+              <span class="menu-text">Speakers</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Reports</span>
+          <li>
+            <a href="#">
+              <span><img src="/images/reports.svg" alt="reports icon" /></span>
+              <span class="menu-text">Reports</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Notifications</span>
+          <li>
+            <a href="#">
+              <span
+                ><img src="/images/bell.svg" alt="notifications icon"
+              /></span>
+              <span class="menu-text">Notifications</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Messages</span>
+          <li>
+            <a href="#">
+              <span
+                ><img src="/images/double-chat-bubble.svg" alt="messages icon"
+              /></span>
+              <span class="menu-text">Messages</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Settings</span>
+          <li>
+            <a href="#">
+              <span
+                ><img src="/images/settings-2.svg" alt="settings icon"
+              /></span>
+              <span class="menu-text">Settings</span>
             </a>
           </li>
-          <li class="">
-            <a href="#" class="">
-              <span><img src="/images/events.png" alt="home icon" /></span
-              ><span>Collapse</span>
+          <li>
+            <a href="#" id="collapseBtn">
+              <span
+                ><img src="/images/double-chevron-left.svg" alt="collapse icon"
+              /></span>
+              <span class="menu-text">Collapse</span>
             </a>
           </li>
           <li class="profile">
             <span>
-              <img src="/images/Avatar.svg" alt="home icon" />
+              <img src="/images/Avatar.svg" alt="profile icon" />
             </span>
-            <span>
+            <span class="profile-info">
               <small>Rudra Devi</small>
               <small>rudra.devi@gmail.com</small>
             </span>
@@ -85,43 +96,76 @@
           <div class="cards">
             <!-- Example Card 1 -->
             <div class="card">
-              <h3>Card Title 1</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec malesuada tortor.
-              </p>
+              <h3>Total Events</h3>
+              <div>
+                <b>100,000</b>
+              </div>
             </div>
 
             <!-- Example Card 2 -->
             <div class="card">
-              <h3>Card Title 2</h3>
+              <h3>Total Events</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec malesuada tortor.
+                <b>100,000</b>
               </p>
             </div>
 
             <!-- Example Card 3 -->
             <div class="card">
-              <h3>Card Title 3</h3>
+              <h3>Total Events</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec malesuada tortor.
+                <b>100,000</b>
               </p>
             </div>
 
             <!-- Example Card 4 -->
             <div class="card">
-              <h3>Card Title 4</h3>
+              <h3>Total Events</h3>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-                nec malesuada tortor.
+                <b>100,000</b>
               </p>
             </div>
           </div>
         </main>
       </div>
     </div>
+
+    <!-- Footer Navigation (Visible on Mobile Only) -->
+    <footer class="mobile-footer">
+      <ul class="footer-nav">
+        <li class="nav-item active">
+          <a href="#" class="nav-link">
+            <img src="/images/home.png" alt="home icon" />
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <img src="/images/events.png" alt="events icon" />
+            <span>Events</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <img src="/images/reports.svg" alt="reports icon" />
+            <span>Reports</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <img src="/images/speaker.svg" alt="speakers icon" />
+            <span>Speakers</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <img src="/images/Avatar.svg" alt="profile icon" />
+            <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
     <script src="/js/index.js"></script>
   </body>
 </html>
