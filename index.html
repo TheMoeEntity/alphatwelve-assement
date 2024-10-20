@@ -6,6 +6,9 @@
     <title>AlphaTwelve Assessment | Home</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Feather Icons CDN -->
+    <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body class="bg-white">
     <!-- Wrapper -->
@@ -14,7 +17,7 @@
       <aside class="sidebar" id="sidebar">
         <div class="top-nav">
           <div class="logo">Full Logo</div>
-          <button id='closeBtn-side' class="close">&times;</button>
+          <button id="closeBtn-side" class="close">&times;</button>
         </div>
         <ul class="menu">
           <li class="active">
@@ -86,44 +89,222 @@
       </aside>
 
       <!-- Main content -->
+      <header>
+        <div class="header-mobile">
+          <div class="logo">Full Logo</div>
+          <button id="openBtn" class="">
+            <img src="/images/solar_hamburger-menu-broken.svg" alt="" />
+          </button>
+        </div>
+        <h3>Welcome! here's your summary</h3>
+      </header>
       <div class="content">
-        <header>
+        <header class="header-large">
           <span id="toggleSidebar">&#9776;</span>
           <h1>Welcome! here's your summary</h1>
         </header>
 
-        <main>
+        <main class="main-content">
           <div class="cards">
             <!-- Example Card 1 -->
             <div class="card">
-              <h3>Total Events</h3>
+              <div>
+                <h3>Total Events</h3>
+                <img src="/images/information.svg" alt="" />
+              </div>
+
               <div>
                 <b>100,000</b>
+                <img src="/images/arrow-up-right.svg" alt="" />
+                <span>+5.0 %</span>
               </div>
             </div>
 
             <!-- Example Card 2 -->
             <div class="card">
-              <h3>Total Events</h3>
-              <p>
-                <b>100,000</b>
-              </p>
+              <div>
+                <h3>Active Speakers</h3>
+                <img src="/images/information.svg" alt="" />
+              </div>
+
+              <div>
+                <b>25</b>
+                <img src="/images/arrow-down-right.svg" alt="" />
+                <span class="down">-5.0 %</span>
+              </div>
             </div>
 
             <!-- Example Card 3 -->
             <div class="card">
-              <h3>Total Events</h3>
-              <p>
-                <b>100,000</b>
-              </p>
+              <div>
+                <h3>Total Registerations</h3>
+                <img src="/images/information.svg" alt="" />
+              </div>
+
+              <div>
+                <b>300</b>
+                <img src="/images/arrow-up-right.svg" alt="" />
+                <span>+5.0 %</span>
+              </div>
             </div>
 
             <!-- Example Card 4 -->
             <div class="card">
-              <h3>Total Events</h3>
-              <p>
-                <b>100,000</b>
-              </p>
+              <div>
+                <h3>Total Revenue</h3>
+                <img src="/images/information.svg" alt="" />
+              </div>
+
+              <div>
+                <b>$500,000</b>
+                <img src="/images/arrow-up-right.svg" alt="" />
+                <span>+5.0 %</span>
+              </div>
+            </div>
+          </div>
+          <div class="registeration">
+            <h3>Event registerations per month</h3>
+            <div>
+              <div>
+                <canvas id="myBarChart" height="200"></canvas>
+              </div>
+              <div class="carousel">
+                <div>
+                  <img
+                    src="/images/Slide.svg"
+                    alt="Slide 1"
+                    width="100%"
+                    height="auto"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="history">
+            <h3>Event History</h3>
+            <div>
+              <div class="left-nav">
+                <div>
+                  <input type="search" name="" placeholder="Search..." id="" />
+                </div>
+                <div>
+                  <select name="" id="">
+                    <option value="Date">Date</option>
+                  </select>
+                </div>
+                <div>
+                  <select name="" id="">
+                    <option value="Date">Status</option>
+                  </select>
+                </div>
+                <div>
+                  <select name="" id="">
+                    <option value="Date">Name</option>
+                  </select>
+                  <small><b>Displaying 100 results</b></small>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <small>Sort:</small>
+                  <select name="" id="">
+                    <option value="Date">Most Recent</option>
+                    <option value="Date">Oldest</option>
+                    <option value="Date">Most Visited</option>
+                  </select>
+                </div>
+                <button><img src="/images/dots-vertical.svg" alt="" /></button
+                ><button>
+                  <img src="/images/download.svg" alt="" /> Export
+                </button>
+              </div>
+            </div>
+            <div class="table-container">
+              <table class="custom-table">
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th class="mobile-hidden">Speaker</th>
+                    <th class="mobile-hidden">Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Main Row -->
+                  <tr>
+                    <td>
+                      <div class="collapsible-trigger">
+                        <i class="icons" data-feather="chevron-right"></i>
+                        <span>Web Development Course</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>
+                      <span class="completed">Completed</span>
+                    </td>
+                  </tr>
+                  <!-- Collapsible Row (Only visible on mobile) -->
+                  <tr class="mobile-visible collapsible-content">
+                    <td>
+                      <div>
+                        <span>Moses Nwigberi</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>October 20, 2024</td>
+                  </tr>
+                   <tr>
+                    <td>
+                      <div class="collapsible-trigger">
+                        <i class="icons" data-feather="chevron-right"></i>
+                        <span>Web Development Course</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>
+                      <span class="completed">Completed</span>
+                    </td>
+                  </tr>
+                  <!-- Collapsible Row (Only visible on mobile) -->
+                  <tr class="mobile-visible collapsible-content">
+                    <td>
+                      <div>
+                        <span>Moses Nwigberi</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>October 20, 2024</td>
+                  </tr>
+                   <tr>
+                    <td>
+                      <div class="collapsible-trigger">
+                        <i class="icons" data-feather="chevron-right"></i>
+                        <span>Web Development Course</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>
+                      <span class="completed">Completed</span>
+                    </td>
+                  </tr>
+                  <!-- Collapsible Row (Only visible on mobile) -->
+                  <tr class="mobile-visible collapsible-content">
+                    <td>
+                      <div>
+                        <span>Moses Nwigberi</span>
+                      </div>
+                    </td>
+                    <td class="mobile-hidden">John Doe</td>
+                    <td class="mobile-hidden">October 20, 2024</td>
+                    <td>October 20, 2024</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </main>
@@ -167,5 +348,9 @@
     </footer>
 
     <script src="/js/index.js"></script>
+    <script src="/js/charts.js"></script>
+    <script>
+      feather.replace();
+    </script>
   </body>
 </html>

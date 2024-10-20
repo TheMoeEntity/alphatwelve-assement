@@ -1,0 +1,117 @@
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 12px 15px;
+  font-size: small;
+}
+
+.custom-table td > span {
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+  width: fit-content;
+  font-size: small;
+  border-radius: 12px;
+  justify-content: center;
+  gap: 8px;
+}
+
+.custom-table td span.completed {
+  background-color: #d1fae5;
+  color: #10b981;
+}
+
+.custom-table td span.progress {
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+.custom-table td span > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.custom-table td span > span.completed {
+  background-color: #10b981;
+}
+
+.custom-table td span > span.progress {
+  background-color: #3b82f6;
+}
+
+.custom-table thead {
+  background-color: #f1f5f9;
+}
+
+.custom-table thead th {
+  font-weight: 200;
+  font-size: small;
+  color: #334155;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.custom-table td {
+  color: #64748b;
+}
+
+.custom-table td div {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.custom-table td div .icons {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobile-visible row (for collapsible accordion) */
+.mobile-visible {
+  background-color: #f5f5f5;
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease, visibility 0.4s;
+}
+
+.mobile-visible.active {
+  max-height: 100px; /* Set appropriate height to show content */
+  padding: 12px 15px;
+  visibility: visible;
+}
+
+/* Chevron icon animation */
+.collapsible-trigger {
+  cursor: pointer;
+}
+
+.collapsible-trigger .icons {
+  transition: transform 0.3s ease;
+}
+
+.collapsible-trigger.active .icons {
+  transform: rotate(90deg);
+}
+
+/* Hide mobile-visible on larger screens */
+@media (min-width: 768px) {
+  .mobile-visible {
+    display: none;
+  }
+}
+
+/* Show mobile-visible rows only on smaller screens */
+@media (max-width: 767px) {
+  .mobile-visible {
+    display: table-row;
+  }
+}
