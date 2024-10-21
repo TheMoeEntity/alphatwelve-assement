@@ -254,7 +254,7 @@ header > h3 {
   font-weight: lighter;
   margin-left: 10px;
 }
-.history > div > div button {
+.history > div > div > button {
   padding: 10px;
   height: auto;
   border: 1px solid #e2e8f0;
@@ -456,7 +456,39 @@ header > h3 {
 .table-btns {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 13px;
+}
+.table-btns > button {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: x-small;
+}
+.table-btns > button.prev {
+  background: #e2e8f0;
+}
+.table-btns > button.next {
+  border: 1px solid #e2e8f0;
+}
+.table-btns > div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  cursor: pointer;
+}
+.table-btns > div.active {
+  background-color: #8576ff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
 }
 .table-sort {
   display: flex;
@@ -582,11 +614,19 @@ header > h3 {
   }
 }
 @media (max-width: 768px) {
+  .custom-prev,
+  .custom-next {
+    padding: 5px;
+    font-size: small;
+  }
+  .splide__pagination.custom-indicators {
+    bottom: 10px;
+  }
   .registeration .carousel {
     height: auto;
   }
   .description {
-    bottom:0px ;
+    bottom: -10px;
   }
   /* Hide extra columns on mobile */
   .mobile-hidden {
@@ -610,7 +650,7 @@ header > h3 {
     width: 18px;
     height: 18px;
   }
-    .mobile-visible.active {
+  .mobile-visible.active {
     display: table-row;
   }
 }
