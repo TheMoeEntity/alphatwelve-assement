@@ -5,10 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AlphaTwelve Assessment | Home</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="./css/index.css" />
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Feather Icons CDN -->
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Include Splide CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- Include Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
   <body class="bg-white">
     <!-- Wrapper -->
@@ -169,13 +186,109 @@
                 <canvas id="myBarChart" height="200"></canvas>
               </div>
               <div class="carousel">
-                <div>
+                <!-- <div>
                   <img
                     src="/images/Slide.svg"
                     alt="Slide 1"
                     width="100%"
                     height="auto"
                   />
+                </div> -->
+                <div id="splide" class="splide">
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      <li class="splide__slide carousel">
+                        <img
+                          src="/images/Slide.svg"
+                          alt="Slide 1"
+                          width="100%"
+                          height="auto"
+                        />
+                        <div class="description">
+                          <div class="overlay">
+                            <div class="description-text">
+                              <b>Latest News & Update</b>
+                              <p>
+                                Turpis interdum nunc varius ornare dignissim
+                                pretium. Massa ornare quis aliquet sed vitae.
+                                Sed velit nisi, fermentum erat. Fringilla purus,
+                                erat fringilla tincidunt quisque non.
+                                Pellentesque in ut tellus.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="splide__slide carousel">
+                        <img
+                          src="/images/Slide (1).svg"
+                          alt="Slide 1"
+                          width="100%"
+                          height="auto"
+                        />
+                        <div class="description">
+                          <div class="overlay">
+                            <div class="description-text">
+                              <b>Latest News & Update</b>
+                              <p>
+                                Turpis interdum nunc varius ornare dignissim
+                                pretium. Massa ornare quis aliquet sed vitae.
+                                Sed velit nisi, fermentum erat. Fringilla purus,
+                                erat fringilla tincidunt quisque non.
+                                Pellentesque in ut tellus.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="splide__slide carousel">
+                        <img
+                          src="/images/Slide (2).svg"
+                          alt="Slide 1"
+                          width="100%"
+                          height="auto"
+                        />
+                        <div class="description">
+                          <div class="overlay">
+                            <div class="description-text">
+                              <b>Latest News & Update</b>
+                              <p>
+                                Turpis interdum nunc varius ornare dignissim
+                                pretium. Massa ornare quis aliquet sed vitae.
+                                Sed velit nisi, fermentum erat. Fringilla purus,
+                                erat fringilla tincidunt quisque non.
+                                Pellentesque in ut tellus.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <!-- Add more slides as needed -->
+                    </ul>
+                  </div>
+
+                  <!-- Custom Next/Prev buttons -->
+                  <div class="splide__arrows custom-arrows">
+                    <button
+                      class="splide__arrow splide__arrow--prev custom-prev"
+                    >
+                      <i
+                        class="fas fa-angle-left"
+                        style="color: black; font-size: small"
+                      ></i>
+                    </button>
+                    <button
+                      class="splide__arrow splide__arrow--next custom-next"
+                    >
+                      <i
+                        class="fas fa-angle-right"
+                        style="color: black; font-size: small"
+                      ></i>
+                    </button>
+                  </div>
+
+                  <!-- Custom Pagination -->
+                  <ul class="splide__pagination custom-indicators"></ul>
                 </div>
               </div>
             </div>
@@ -255,7 +368,7 @@
                     <td class="mobile-hidden">October 20, 2024</td>
                     <td>October 20, 2024</td>
                   </tr>
-                   <tr>
+                  <tr>
                     <td>
                       <div class="collapsible-trigger">
                         <i class="icons" data-feather="chevron-right"></i>
@@ -279,7 +392,7 @@
                     <td class="mobile-hidden">October 20, 2024</td>
                     <td>October 20, 2024</td>
                   </tr>
-                   <tr>
+                  <tr>
                     <td>
                       <div class="collapsible-trigger">
                         <i class="icons" data-feather="chevron-right"></i>
@@ -305,6 +418,17 @@
                   </tr>
                 </tbody>
               </table>
+              <div class="table-nav">
+                <div class="table-btns"></div>
+                <div class="table-sort">
+                  <div><small>Show:</small></div>
+                  <select name="" id="">
+                    <option value="Date">10 rows</option>
+                    <option value="Date">20 rows</option>
+                    <option value="Date">40 rows</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </main>
@@ -351,6 +475,21 @@
     <script src="/js/charts.js"></script>
     <script>
       feather.replace();
+      document.addEventListener("DOMContentLoaded", function () {
+        new Splide("#splide", {
+          type: "loop", // or 'slide' depending on your need
+          perPage: 1,
+          arrows: true,
+          pagination: true,
+          classes: {
+            arrows: "splide__arrows custom-arrows",
+            prev: "splide__arrow--prev custom-prev",
+            next: "splide__arrow--next custom-next",
+            pagination: "splide__pagination custom-indicators",
+            page: "splide__pagination__page custom-indicator",
+          },
+        }).mount();
+      });
     </script>
   </body>
 </html>
