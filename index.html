@@ -28,6 +28,45 @@
     />
   </head>
   <body class="bg-white">
+    <!-- modal -->
+    <div class="events-modal-background" id="modal">
+      <div class="events-modal">
+        <div class="top-nav">
+          <div class="logo">
+            <h4 id="event-name">Web development course</h4>
+            <span id="event-date">23rd May, 2024</span>
+          </div>
+          <button id="closeModal" class="close-btn">&times;</button>
+        </div>
+        <div class="event-description">
+          <p id="event-details">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi
+            asperiores, incidunt ab assumenda ipsum mollitia?
+          </p>
+          <div class="event-attendees">
+            <img src="/images/attendee.svg" alt="" />
+            <img src="/images/attendee-1.svg" alt="" />
+            <img src="/images/attendee-2.svg" alt="" />
+          </div>
+          <div>
+            <span id="event-speakers">
+              3 Guest Speakers: Moses Nwigberi, Anthony Nwigberi, Favor
+              Chibueze.
+            </span>
+            <span id="attendee-count">300 Attendees</span>
+          </div>
+        </div>
+        <div class="event-footer">
+          <div>
+            <button class="edit">Edit</button>
+          </div>
+          <div>
+            <button class="delete">Delete</button>
+            <button class="mark">Mark as Completed</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Wrapper -->
     <div class="container">
       <!-- Sidebar -->
@@ -332,32 +371,36 @@
                 </button>
               </div>
             </div>
-            <div class="table-container">
+            <!-- <!-- <div class="table-container"> -->
               <table class="custom-table">
                 <thead>
                   <tr>
                     <th>Event Name</th>
-                    <th class="mobile-hidden">Speaker</th>
                     <th class="mobile-hidden">Date</th>
+                    <th class="mobile-hidden">Speaker</th>
                     <th>Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <!-- Main Row -->
+                <tbody id="event-table-body">
                   <tr>
                     <td>
-                      <div class="collapsible-trigger">
-                        <i class="icons" data-feather="chevron-right"></i>
-                        <span>Web Development Course</span>
+                      <div class="">
+                        <span class="collapsible-trigger">
+                          <i class="icons" data-feather="chevron-right"></i>
+                        </span>
+
+                        <span class="parent-trigger"
+                          >Web Development Course</span
+                        >
                       </div>
                     </td>
-                    <td class="mobile-hidden">John Doe</td>
                     <td class="mobile-hidden">October 20, 2024</td>
+                    <td class="mobile-hidden">John Doe</td>
                     <td>
                       <span class="completed">Completed</span>
                     </td>
                   </tr>
-                  <!-- Collapsible Row (Only visible on mobile) -->
+            
                   <tr class="mobile-visible collapsible-content">
                     <td>
                       <div>
@@ -370,18 +413,23 @@
                   </tr>
                   <tr>
                     <td>
-                      <div class="collapsible-trigger">
-                        <i class="icons" data-feather="chevron-right"></i>
-                        <span>Web Development Course</span>
+                      <div class="">
+                        <span class="collapsible-trigger">
+                          <i class="icons" data-feather="chevron-right"></i>
+                        </span>
+
+                        <span class="parent-trigger"
+                          >Cloud Innovation Summit</span
+                        >
                       </div>
                     </td>
-                    <td class="mobile-hidden">John Doe</td>
                     <td class="mobile-hidden">October 20, 2024</td>
+                    <td class="mobile-hidden">John Doe</td>
                     <td>
                       <span class="completed">Completed</span>
                     </td>
                   </tr>
-                  <!-- Collapsible Row (Only visible on mobile) -->
+                 
                   <tr class="mobile-visible collapsible-content">
                     <td>
                       <div>
@@ -392,30 +440,44 @@
                     <td class="mobile-hidden">October 20, 2024</td>
                     <td>October 20, 2024</td>
                   </tr>
+                </tbody>
+              </table>
+              <div class="table-nav">
+                <div class="table-btns" id="table-btns">
+                  <!-- <button class="active prev">
+                    <i class="fas fa-angle-left" style="color: black"></i>
+                  </button>
+                  <div class="active">1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <button class="next">
+                      <i class="fas fa-angle-right" style="color: black"></i>
+                  </button> -->
+                </div>
+              <div class="table-sort">
+                  <div>
+                    <small>Show:</small>
+                  </div>
+                  <select id="rows-per-page">
+                    <option value="10">10 rows</option>
+                    <option value="20">20 rows</option>
+                    <option value="40">40 rows</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <!-- <div class="table-container">
+              <table class="custom-table">
+                <thead>
                   <tr>
-                    <td>
-                      <div class="collapsible-trigger">
-                        <i class="icons" data-feather="chevron-right"></i>
-                        <span>Web Development Course</span>
-                      </div>
-                    </td>
-                    <td class="mobile-hidden">John Doe</td>
-                    <td class="mobile-hidden">October 20, 2024</td>
-                    <td>
-                      <span class="completed">Completed</span>
-                    </td>
+                    <th>Event Name</th>
+                    <th class="mobile-hidden">Date</th>
+                    <th class="mobile-hidden">Speaker</th>
+                    <th>Status</th>
                   </tr>
-                  <!-- Collapsible Row (Only visible on mobile) -->
-                  <tr class="mobile-visible collapsible-content">
-                    <td>
-                      <div>
-                        <span>Moses Nwigberi</span>
-                      </div>
-                    </td>
-                    <td class="mobile-hidden">John Doe</td>
-                    <td class="mobile-hidden">October 20, 2024</td>
-                    <td>October 20, 2024</td>
-                  </tr>
+                </thead>
+                <tbody id="event-table-body">
                 </tbody>
               </table>
               <div class="table-nav">
@@ -432,14 +494,14 @@
                 </div>
                 <div class="table-sort">
                   <div><small>Show:</small></div>
-                  <select name="" id="">
-                    <option value="Date">10 rows</option>
-                    <option value="Date">20 rows</option>
-                    <option value="Date">40 rows</option>
+                  <select name="" id="rows-per-page">
+                    <option value="10">10 rows</option>
+                    <option value="20">20 rows</option>
+                    <option value="40">40 rows</option>
                   </select>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </main>
       </div>
@@ -481,10 +543,10 @@
       </ul>
     </footer>
 
-    <script src="/js/index.js"></script>
+    <script type="module" src="/js/index.js"></script>
     <script src="/js/charts.js"></script>
+    <script type="module" src="/js/table.js"></script>
     <script>
-      feather.replace();
       document.addEventListener("DOMContentLoaded", function () {
         new Splide("#splide", {
           type: "loop", // or 'slide' depending on your need

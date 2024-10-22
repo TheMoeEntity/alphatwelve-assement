@@ -12,6 +12,7 @@ body {
 }
 button {
   cursor: pointer;
+  border: none;
   background-color: transparent;
 }
 b,
@@ -357,12 +358,17 @@ header > h3 {
   width: 100%;
   border-collapse: collapse;
 }
-
+.parent-trigger {
+  cursor: pointer;
+}
 .custom-table th,
 .custom-table td {
   padding: 12px 15px;
   font-size: small;
 }
+/* .custom-table tr {
+  pointer-events: none;
+} */
 
 .custom-table thead {
   background-color: #f1f5f9;
@@ -392,6 +398,7 @@ header > h3 {
 .custom-table td div .icons {
   width: 20px;
   height: 20px;
+  display: none;
 }
 
 .custom-table td > span {
@@ -413,6 +420,7 @@ header > h3 {
 .custom-table td span.progress {
   background-color: #dbeafe;
   color: #3b82f6;
+  font-size: small;
 }
 
 .custom-table td span > span {
@@ -423,6 +431,7 @@ header > h3 {
 
 .custom-table td span > span.completed {
   background-color: #10b981;
+  font-size: smaller;
 }
 
 .custom-table td span > span.progress {
@@ -433,18 +442,14 @@ header > h3 {
 .mobile-visible {
   display: none;
   background-color: #f5f5f5;
-  max-height: 0 !important;
-  padding: 0 !important;
+  max-height: 0;
+  padding: 0;
   overflow: hidden;
   transition: all 0.3s;
 }
 
 /* When active (on click), display collapsible content */
-.mobile-visible.active {
-  display: table-row;
-  max-height: 100px;
-  padding: 12px 15px;
-}
+
 .table-nav {
   display: flex;
   width: 100%;
@@ -478,8 +483,8 @@ header > h3 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
 }
@@ -597,6 +602,138 @@ header > h3 {
 .description-text p {
   font-size: smaller;
 }
+
+/* EVENTS MODAL */
+.events-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+.events-modal {
+  background-color: white;
+  padding: 0px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow:
+    0 4px 12px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 440px;
+  max-width: 90%;
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+}
+.events-modal > div {
+  flex: 1;
+}
+.events-modal > div:nth-child(1) {
+  padding: 20px;
+}
+.events-modal > div:nth-child(2) {
+  flex-grow: 3;
+  padding: 20px;
+}
+.events-modal-background.show {
+  opacity: 1;
+  visibility: visible;
+}
+.collapsible-trigger {
+  display: none;
+}
+.top-nav .logo {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 5px;
+}
+.top-nav h3 {
+  color: #334155;
+}
+.top-nav span {
+  font-weight: lighter;
+  color: #64748b;
+  font-size: 14px;
+}
+.event-description {
+  color: #334155;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 15px;
+  font-size: small;
+  padding: 10px 0;
+}
+.event-description > div:last-child {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
+}
+.event-attendees {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px;
+}
+#closeModal {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  font-size: medium;
+}
+.event-attendees img {
+  margin-left: -10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.event-attendees img:nth-child(1) {
+  z-index: 10;
+}
+.event-attendees img:nth-child(2) {
+  z-index: 9;
+}
+.event-attendees img:nth-child(3) {
+  z-index: 8;
+}
+.events-modal > div:nth-child(3) {
+  background: #f8fafc;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.events-modal > div:nth-child(3) .edit {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 10px 15px;
+}
+.events-modal > div:nth-child(3) > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.events-modal > div:nth-child(3) .delete {
+  background: #f43f5e;
+  color: white;
+  padding: 10px 15px;
+}
+.events-modal > div:nth-child(3) .mark {
+  background: #8576ff;
+  color: white;
+  padding: 10px 15px;
+}
 /* MEDIA QUERIES */
 
 @media (min-width: 1024px) {
@@ -644,17 +781,27 @@ header > h3 {
   /* Chevron icon and collapsible trigger adjustments for mobile */
   .collapsible-trigger {
     cursor: pointer;
+    border: none;
+    display: block;
   }
 
   .collapsible-trigger .icons {
     width: 18px;
     height: 18px;
   }
+  .custom-table td div .icons {
+    display: block;
+  }
   .mobile-visible.active {
     display: table-row;
   }
 }
 @media (max-width: 768px) {
+  .mobile-visible.active {
+    display: table-row;
+    max-height: 100px;
+    padding: 12px 15px;
+  }
   .mobile-hidden {
     display: none;
   }
