@@ -28,6 +28,18 @@
     />
   </head>
   <body class="bg-white">
+    <!-- Confirm Box Element -->
+    <div id="confirm-box" class="confirm-box hidden">
+      <div class="confirm-box-content">
+        <h3>Are you sure?</h3>
+        <p id="confirm-message">Do you want to proceed with this action?</p>
+        <div class="confirm-box-buttons">
+          <button id="confirm-yes" class="confirm-button confirm-yes">Yes</button>
+          <button id="confirm-no" class="confirm-button confirm-no">No</button>
+        </div>
+      </div>
+    </div>
+
     <!-- modal -->
     <div class="events-modal-background" id="modal">
       <div class="events-modal">
@@ -62,7 +74,7 @@
           </div>
           <div>
             <button class="delete">Delete</button>
-            <button class="mark">Mark as Completed</button>
+            <button class="mark" id="mark">Mark as Completed</button>
           </div>
         </div>
       </div>
@@ -124,7 +136,7 @@
               <span class="menu-text">Settings</span>
             </a>
           </li>
-          <li>
+          <li id="collapse">
             <a href="#" id="collapseBtn">
               <span
                 ><img src="/images/double-chevron-left.svg" alt="collapse icon"
@@ -170,7 +182,7 @@
               </div>
 
               <div>
-                <b>100,000</b>
+                <b>0</b>
                 <img src="/images/arrow-up-right.svg" alt="" />
                 <span>+5.0 %</span>
               </div>
@@ -184,7 +196,7 @@
               </div>
 
               <div>
-                <b>25</b>
+                <b>0</b>
                 <img src="/images/arrow-down-right.svg" alt="" />
                 <span class="down">-5.0 %</span>
               </div>
@@ -198,7 +210,7 @@
               </div>
 
               <div>
-                <b>300</b>
+                <b>0</b>
                 <img src="/images/arrow-up-right.svg" alt="" />
                 <span>+5.0 %</span>
               </div>
@@ -212,7 +224,7 @@
               </div>
 
               <div>
-                <b>$500,000</b>
+                $<b>0</b>
                 <img src="/images/arrow-up-right.svg" alt="" />
                 <span>+5.0 %</span>
               </div>
@@ -337,7 +349,7 @@
             <div>
               <div class="left-nav">
                 <div>
-                  <input type="search" name="" placeholder="Search..." id="" />
+                  <input type="search" name="" placeholder="Search..." id="search" />
                 </div>
                 <div>
                   <select name="" id="">
@@ -353,7 +365,7 @@
                   <select name="" id="">
                     <option value="Date">Name</option>
                   </select>
-                  <small><b>Displaying 100 results</b></small>
+                  <small><b>Displaying <span id="totalRows">10</span> results</b></small>
                 </div>
               </div>
               <div>

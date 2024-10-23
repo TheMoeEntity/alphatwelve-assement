@@ -1,12 +1,36 @@
+import { Helpers } from "./Helpers.js";
 const eventName = document.getElementById("event-name");
 const eventDate = document.querySelector("#event-date");
 const eventDetails = document.querySelector("#event-details");
 const eventSpeakers = document.querySelector("#event-speakers");
 const eventCount = document.querySelector("#attendee-count");
-let currEvent = {}; // This will hold the current event's data
+const markBtn = document.querySelector("#mark");
+const rowsPerPageSelect = document.getElementById("rows-per-page");
+const searchBar = document.querySelector("#search");
+const totalRows = document.querySelector("#totalRows");
 let eventData = [];
 let currentPage = 1; // Track the current page
-const rowsPerPage = 10; // Number of rows per page
+let rowsPerPage = 10; // Number of rows per page
+let currIndex = null;
+
+rowsPerPageSelect.addEventListener("change", (e) => {
+  rowsPerPage = parseInt(e.target.value); // Update rowsPerPage based on the selected value
+  totalRows.textContent = rowsPerPage;
+  currentPage = 1; // Reset to the first page after changing rows per page
+  const totalPages = Math.ceil(eventData.length / rowsPerPage); // Recalculate total pages
+  populateTableWithPagination(eventData, currentPage); // Re-populate the table
+  setupPagination(totalPages); // Re-setup pagination with the new number of rows per page
+});
+
+// search functionality
+searchBar.addEventListener("input", (e) => {
+  const keyword = e.target.value;
+  e.target.style.outline = "none";
+  const filteredEvents = eventData.filter((item) =>
+    item.eventName.toLowerCase().includes(keyword.toLowerCase())
+  );
+  populateTableWithPagination(filteredEvents, currentPage);
+});
 
 // Fetch and populate the table with pagination
 async function fetchAndPopulateTable() {
@@ -80,6 +104,7 @@ function populateTableWithPagination(data, page) {
   tableRows.forEach((row) => {
     row.addEventListener("click", (event) => {
       const eventIndex = event.target.getAttribute("data-index");
+      currIndex = eventIndex;
       const selectedEvent = data[eventIndex]; // Get the selected event data
 
       // Set the modal content with the event details
@@ -88,6 +113,10 @@ function populateTableWithPagination(data, page) {
       eventDetails.innerHTML = selectedEvent.eventDescription;
       eventSpeakers.innerHTML = `${selectedEvent.attendees.length} Guest Speakers: ${selectedEvent.speakers.join(", ")}`;
       eventCount.innerHTML = selectedEvent.attendees.length + " Attendees";
+      markBtn.innerHTML =
+        selectedEvent.status.toLowerCase() == "completed"
+          ? "Mark as in-progress"
+          : "Mark as Completed";
 
       // Show the modal
       modal.classList.add("show");
@@ -113,6 +142,8 @@ function populateTableWithPagination(data, page) {
       feather.replace();
     });
   });
+  deleteAction();
+  markAction();
   feather.replace();
   //   setupRowListeners();
 }
@@ -167,3 +198,84 @@ function changePage(page, totalPages) {
 
 // Call the fetch function on page load
 fetchAndPopulateTable();
+const deleteAction = () => {
+  document.querySelectorAll(".delete").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = document.querySelector("#modal");
+      const selectedEvent = eventData[currIndex];
+      modal.classList.remove("show");
+      showConfirmBox(
+        "Do you want to delete this item?",
+        function (isConfirmed) {
+          if (isConfirmed) {
+            console.log("User confirmed action!");
+            const filteredEvents = eventData.filter(
+              (item) => item !== selectedEvent
+            );
+            eventData = filteredEvents;
+            populateTableWithPagination(eventData, currentPage);
+            totalRows.textContent = eventData.length;
+          }
+        }
+      );
+    });
+  });
+};
+const markAction = () => {
+  document.querySelectorAll(".mark").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = document.querySelector("#modal");
+      const selectedEvent = eventData[currIndex];
+      const status = selectedEvent.status;
+      modal.classList.remove("show");
+      showConfirmBox(
+        `Do you want to mark this event as ${
+          status.toLowerCase() == "completed" ? "In-progress" : "Completed"
+        }`,
+        function (isConfirmed) {
+          if (isConfirmed) {
+            console.log("User confirmed action!");
+            const filteredEvents = eventData.map((item) =>
+              item == selectedEvent
+                ? {
+                    ...item,
+                    status:
+                      status.toLowerCase() == "completed"
+                        ? "In Progress"
+                        : "Completed",
+                  }
+                : item
+            );
+            eventData = filteredEvents;
+            populateTableWithPagination(eventData, currentPage);
+          }
+        }
+      );
+    });
+  });
+};
+
+const showConfirmBox = (message, callback) => {
+  const confirmBox = document.getElementById("confirm-box");
+  const confirmMessage = document.getElementById("confirm-message");
+  const confirmYesButton = document.getElementById("confirm-yes");
+  const confirmNoButton = document.getElementById("confirm-no");
+
+  // Set the message dynamically
+  confirmMessage.textContent = message;
+
+  // Display the confirm box
+  confirmBox.classList.remove("hidden");
+
+  // Handle the 'Yes' button click
+  confirmYesButton.onclick = function () {
+    confirmBox.classList.add("hidden");
+    callback(true); // Execute the callback with 'true'
+  };
+
+  // Handle the 'No' button click
+  confirmNoButton.onclick = function () {
+    confirmBox.classList.add("hidden");
+    callback(false); // Execute the callback with 'false'
+  };
+};
