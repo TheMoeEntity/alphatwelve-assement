@@ -1,4 +1,3 @@
-import { Helpers } from "./Helpers.js";
 const eventName = document.getElementById("event-name");
 const eventDate = document.querySelector("#event-date");
 const eventDetails = document.querySelector("#event-details");
@@ -212,7 +211,7 @@ function changePage(page, totalPages) {
 }
 
 // Call the fetch function on page load
-fetchAndPopulateTable();
+await fetchAndPopulateTable();
 const deleteAction = () => {
   document.querySelectorAll(".delete").forEach((btn) => {
     btn.addEventListener("click", () => {

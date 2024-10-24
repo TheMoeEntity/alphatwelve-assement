@@ -25,7 +25,7 @@ const getMonthIndex = (dateString) => {
     "November",
     "December",
   ];
-  const monthName = dateString.split(" ")[0]; // e.g., "January 10, 2024"
+  const monthName = dateString.split(" ")[0];
   return months.indexOf(monthName);
 };
 const getRegisterationByMonth = () => {

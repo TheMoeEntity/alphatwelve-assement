@@ -3,7 +3,7 @@ const closeBtn = document.querySelector("#closeBtn-side");
 const openBtn = document.querySelector("#openBtn");
 const tableRows = document.querySelectorAll(".parent-trigger");
 const closeModal = document.querySelector("#closeModal");
-// const splide = new Splide(".splide").mount();
+
 document.addEventListener("DOMContentLoaded", () => {
   // Function to animate the number countdown
   function animateNumbers(element, start, end, duration) {
@@ -33,10 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalRevenueElement = document.querySelector(".card:nth-child(4) b");
 
     // Animate each number with a countdown effect
-    animateNumbers(totalEventsElement, 0, 1000, 2000); // 100,000 total events
+    animateNumbers(totalEventsElement, 0, 1000, 2000); // 1,000 total events
     animateNumbers(activeSpeakersElement, 0, 25, 2000); // 25 active speakers
     animateNumbers(totalRegistrationsElement, 0, 300, 2000); // 300 total registrations
-    animateNumbers(totalRevenueElement, 0, 5000, 2000); // $500,000 total revenue
+    animateNumbers(totalRevenueElement, 0, 5000, 2000); // $5,000 total revenue
   }
 
   // Start the countdown 2 seconds after page load
@@ -63,10 +63,8 @@ document.getElementById("toggleSidebar").addEventListener("click", function () {
 document.getElementById("collapseBtn").addEventListener("click", function () {
   const sidebar = document.getElementById("sidebar");
   const content = document.querySelector(".content");
-
   sidebar.classList.toggle("collapsed");
   content.classList.toggle("collapsed");
-  splide.refresh();
 });
 
 window.addEventListener("click", (e) => {
