@@ -14,7 +14,62 @@ let eventData = [];
 let currentPage = 1; // Track the current page
 let rowsPerPage = 10; // Number of rows per page
 let currIndex = null;
-
+const deleteAction = () => {
+  document.querySelectorAll(".delete").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = document.querySelector("#modal");
+      const selectedEvent = eventData[currIndex];
+      modal.classList.remove("show");
+      showConfirmBox(
+        "Do you want to delete this item?",
+        function (isConfirmed) {
+          if (isConfirmed) {
+            console.log("User confirmed action!");
+            const filteredEvents = eventData.filter(
+              (item) => item !== selectedEvent
+            );
+            eventData = filteredEvents;
+            populateTableWithPagination(eventData, currentPage);
+            totalRows.textContent = eventData.length;
+          }
+        }
+      );
+    });
+  });
+};
+const markAction = () => {
+  document.querySelectorAll(".mark").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const modal = document.querySelector("#modal");
+      const selectedEvent = eventData[currIndex];
+      const status = selectedEvent.status;
+      modal.classList.remove("show");
+      showConfirmBox(
+        `Do you want to mark this event as ${
+          status.toLowerCase() == "completed" ? "In-progress" : "Completed"
+        }`,
+        function (isConfirmed) {
+          if (isConfirmed) {
+            console.log("User confirmed action!");
+            const filteredEvents = eventData.map((item) =>
+              item == selectedEvent
+                ? {
+                    ...item,
+                    status:
+                      status.toLowerCase() == "completed"
+                        ? "In Progress"
+                        : "Completed",
+                  }
+                : item
+            );
+            eventData = filteredEvents;
+            populateTableWithPagination(eventData, currentPage);
+          }
+        }
+      );
+    });
+  });
+};
 //Sorting functionality
 sortSelect.addEventListener("change", (e) => {
   const sortValue = e.target.value;
@@ -212,62 +267,6 @@ function changePage(page, totalPages) {
 
 // Call the fetch function on page load
 await fetchAndPopulateTable();
-const deleteAction = () => {
-  document.querySelectorAll(".delete").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const modal = document.querySelector("#modal");
-      const selectedEvent = eventData[currIndex];
-      modal.classList.remove("show");
-      showConfirmBox(
-        "Do you want to delete this item?",
-        function (isConfirmed) {
-          if (isConfirmed) {
-            console.log("User confirmed action!");
-            const filteredEvents = eventData.filter(
-              (item) => item !== selectedEvent
-            );
-            eventData = filteredEvents;
-            populateTableWithPagination(eventData, currentPage);
-            totalRows.textContent = eventData.length;
-          }
-        }
-      );
-    });
-  });
-};
-const markAction = () => {
-  document.querySelectorAll(".mark").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const modal = document.querySelector("#modal");
-      const selectedEvent = eventData[currIndex];
-      const status = selectedEvent.status;
-      modal.classList.remove("show");
-      showConfirmBox(
-        `Do you want to mark this event as ${
-          status.toLowerCase() == "completed" ? "In-progress" : "Completed"
-        }`,
-        function (isConfirmed) {
-          if (isConfirmed) {
-            console.log("User confirmed action!");
-            const filteredEvents = eventData.map((item) =>
-              item == selectedEvent
-                ? {
-                    ...item,
-                    status:
-                      status.toLowerCase() == "completed"
-                        ? "In Progress"
-                        : "Completed",
-                  }
-                : item
-            );
-            eventData = filteredEvents;
-            populateTableWithPagination(eventData, currentPage);
-          }
-        }
-      );
-    });
-  });
-};
 
 const showConfirmBox = (message, callback) => {
   const confirmBox = document.getElementById("confirm-box");
