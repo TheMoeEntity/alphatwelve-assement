@@ -10,14 +10,15 @@
     <!-- Feather Icons CDN -->
     <script src="https://unpkg.com/feather-icons"></script>
 
-    <!-- Include Splide CSS -->
+    <!-- Splide CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css"
     />
     <link rel="stylesheet" href="./css/index.css" />
-    <!-- Include Splide JS -->
+    <!-- Splide JS -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -84,7 +85,9 @@
       <!-- Sidebar -->
       <aside class="sidebar" id="sidebar">
         <div class="top-nav">
-          <div class="logo">Full Logo</div>
+          <div class="logo">
+            <img src="/images/kuda-mfb.jpg" width="100%" height="100%" alt="logo">
+          </div>
           <button id="closeBtn-side" class="close">&times;</button>
         </div>
         <ul class="menu">
@@ -112,13 +115,15 @@
               <span class="menu-text">Reports</span>
             </a>
           </li>
-          <li>
+          <li id="notification">
             <a href="#">
-              <span
-                ><img src="/images/bell.svg" alt="notifications icon"
-              /></span>
+              <span class="bell">
+                <span></span>
+                <img src="/images/bell.svg" alt="notifications icon"/>
+              </span>
               <span class="menu-text">Notifications</span>
             </a>
+            <span>3</span>
           </li>
           <li>
             <a href="#">
@@ -159,7 +164,9 @@
       <!-- Main content -->
       <header>
         <div class="header-mobile">
-          <div class="logo">Full Logo</div>
+          <div class="logo">
+            <img src="/images/kuda-mfb.jpg" width="100%" height="100%" alt="logo">
+          </div>
           <button id="openBtn" class="">
             <img src="/images/solar_hamburger-menu-broken.svg" alt="" />
           </button>
@@ -174,7 +181,7 @@
 
         <main class="main-content">
           <div class="cards">
-            <!-- Example Card 1 -->
+            <!-- Event Card 1 -->
             <div class="card">
               <div>
                 <h3>Total Events</h3>
@@ -188,7 +195,7 @@
               </div>
             </div>
 
-            <!-- Example Card 2 -->
+            <!-- Event Card 2 -->
             <div class="card">
               <div>
                 <h3>Active Speakers</h3>
@@ -202,7 +209,7 @@
               </div>
             </div>
 
-            <!-- Example Card 3 -->
+            <!-- Event Card 3 -->
             <div class="card">
               <div>
                 <h3>Total Registerations</h3>
@@ -216,7 +223,7 @@
               </div>
             </div>
 
-            <!-- Example Card 4 -->
+            <!-- Event Card 4 -->
             <div class="card">
               <div>
                 <h3>Total Revenue</h3>
@@ -349,38 +356,54 @@
             <div>
               <div class="left-nav">
                 <div>
+                  <i class="fas fa-magnifying-glass"></i>
                   <input type="search" name="" placeholder="Search..." id="search" />
                 </div>
                 <div>
                   <select name="" id="">
                     <option value="Date">Date</option>
                   </select>
+                 <!-- <button>
+                    <span>Date</span><i class="fas fa-angle-down"></i>
+                  </button> -->
                 </div>
                 <div>
                   <select name="" id="">
                     <option value="Date">Status</option>
                   </select>
+                  <!-- <button>
+                    <span>Status</span><i class="fas fa-angle-down"></i>
+                  </button> -->
                 </div>
-                <div>
-                  <select name="" id="">
+                <div class="display">
+                   <select name="" id="">
                     <option value="Date">Name</option>
                   </select>
+                   <!-- <button>
+                    <span>Name</span><i class="fas fa-angle-down"></i>
+                  </button> -->
                   <small><b>Displaying <span id="totalRows">10</span> results</b></small>
                 </div>
               </div>
-              <div>
+              <div class="right-nav">
                 <div>
                   <small>Sort:</small>
-                  <select name="" id="">
-                    <option value="Date">Most Recent</option>
-                    <option value="Date">Oldest</option>
-                    <option value="Date">Most Visited</option>
+                  <select name="" id="sort-select">
+                   <option value="most-recent">Most Recent</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="alphabetical">Alphabetically</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
                   </select>
                 </div>
-                <button><img src="/images/dots-vertical.svg" alt="" /></button
-                ><button>
-                  <img src="/images/download.svg" alt="" /> Export
-                </button>
+                <div>
+                  <button>
+                    <img src="/images/dots-vertical.svg" alt="" />
+                  </button>
+                  <button id="export-btn">
+                    <img src="/images/download.svg" alt="" /> Export
+                  </button>
+                </div>
               </div>
             </div>
             <!-- <!-- <div class="table-container"> -->
@@ -456,15 +479,6 @@
               </table>
               <div class="table-nav">
                 <div class="table-btns" id="table-btns">
-                  <!-- <button class="active prev">
-                    <i class="fas fa-angle-left" style="color: black"></i>
-                  </button>
-                  <div class="active">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <button class="next">
-                      <i class="fas fa-angle-right" style="color: black"></i>
-                  </button> -->
                 </div>
               <div class="table-sort">
                   <div>
@@ -519,7 +533,7 @@
       </div>
     </div>
 
-    <!-- Footer Navigation (Visible on Mobile Only) -->
+    <!-- Footer Navigation  -->
     <footer class="mobile-footer">
       <ul class="footer-nav">
         <li class="nav-item active">
@@ -556,7 +570,7 @@
     </footer>
 
     <script type="module" src="/js/index.js"></script>
-    <script src="/js/charts.js"></script>
+    <script type="module" src="/js/charts.js"></script>
     <script type="module" src="/js/table.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -565,6 +579,11 @@
           perPage: 1,
           arrows: true,
           pagination: true,
+          autoplay: true,          // Enable autoplay
+          interval: 5000,          // Delay between transitions (in ms)
+          speed: 1000,             // Transition speed (in ms)
+          pauseOnHover: false,     // Keep auto-scroll even on hover
+          pauseOnFocus: false,   
           classes: {
             arrows: "splide__arrows custom-arrows",
             prev: "splide__arrow--prev custom-prev",

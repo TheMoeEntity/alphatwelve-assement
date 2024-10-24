@@ -3,6 +3,7 @@ const closeBtn = document.querySelector("#closeBtn-side");
 const openBtn = document.querySelector("#openBtn");
 const tableRows = document.querySelectorAll(".parent-trigger");
 const closeModal = document.querySelector("#closeModal");
+// const splide = new Splide(".splide").mount();
 document.addEventListener("DOMContentLoaded", () => {
   // Function to animate the number countdown
   function animateNumbers(element, start, end, duration) {
@@ -44,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
 tableRows.forEach((row) => {
   row.addEventListener("click", () => {
     modal.classList.add("show");
-    alert("Hello world");
   });
 });
 closeBtn.addEventListener("click", () => {
@@ -66,6 +66,7 @@ document.getElementById("collapseBtn").addEventListener("click", function () {
 
   sidebar.classList.toggle("collapsed");
   content.classList.toggle("collapsed");
+  splide.refresh();
 });
 
 window.addEventListener("click", (e) => {
@@ -74,13 +75,3 @@ window.addEventListener("click", (e) => {
   }
 });
 
-const switchInput = document.getElementById("theme-toggle-switch");
-
-// Check saved theme from localStorage
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") {
-  document.body.classList.add("dark-mode");
-  switchInput.checked = true; // Set the toggle to "on" if dark mode is active
-}
-
-// Toggle the theme when switch is clicked

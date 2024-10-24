@@ -43,11 +43,40 @@ select {
   transition:
     transform 0.3s ease,
     width 0.3s ease;
-  z-index: 50;
+  z-index: 1001;
 }
 
 .sidebar.hidden {
   transform: translateX(-100%);
+}
+.bell {
+  position: relative;
+}
+.bell > span {
+  width: 6px;
+  height: 6px;
+  background: #f43f5e;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  display: none;
+}
+#notification {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#notification > span {
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #f43f5e;
 }
 
 .sidebar .menu {
@@ -64,8 +93,6 @@ select {
 }
 
 .sidebar .logo {
-  padding: 30px 20px;
-  width: 100%;
   color: #334155;
 }
 
@@ -111,6 +138,12 @@ select {
 .sidebar.collapsed ul li.profile small {
   display: none;
 }
+.sidebar.collapsed #notification > span {
+  display: none;
+}
+.sidebar.collapsed .bell > span {
+  display: block;
+}
 
 /* Main content */
 .content {
@@ -144,6 +177,10 @@ header > h3 {
 }
 .header-mobile {
   display: none;
+  width: 100%;
+}
+.header-mobile button {
+  width: fit-content;
 }
 .content header h1 {
   font-weight: 100;
@@ -255,7 +292,8 @@ header > h3 {
 }
 .history > div {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row;
+  height: 100%;
   justify-content: space-between;
   align-items: center;
 }
@@ -264,6 +302,60 @@ header > h3 {
   border: 1px solid #e2e8f0;
   padding: 10px;
   color: #334155;
+}
+.history input {
+  padding-left: 35px;
+}
+.left-nav > div:first-child {
+  position: relative;
+}
+.left-nav > div:first-child i {
+  font-size: small;
+  color: #94a3b8;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.left-nav button,
+.left-nav select {
+  color: #334155;
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.display {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.display small {
+}
+.left-nav button i {
+  font-size: smaller;
+}
+.right-nav {
+  display: flex;
+  align-items: center;
+}
+.right-nav > div {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.right-nav > div button {
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 .history input::placeholder {
   color: #cbd5e1;
@@ -446,6 +538,7 @@ header > h3 {
   background-color: #dbeafe;
   color: #3b82f6;
   font-size: small;
+  white-space: nowrap;
 }
 
 .custom-table td span > span {
@@ -479,7 +572,7 @@ header > h3 {
   display: flex;
   width: 100%;
   margin-top: 30px;
-  flex-flow: row wrap;
+  flex-flow: row !important;
   align-items: center;
   justify-content: space-between;
 }
@@ -678,10 +771,12 @@ header > h3 {
 .collapsible-trigger {
   display: none;
 }
-.top-nav .logo {
+.top-nav .logo, .header-mobile .logo {
   display: flex;
   flex-flow: column wrap;
   gap: 5px;
+  width: 100px;
+  height: 100px;
 }
 .top-nav h3 {
   color: #334155;
@@ -690,6 +785,9 @@ header > h3 {
   font-weight: lighter;
   color: #64748b;
   font-size: 14px;
+}
+.top-nav button {
+  border: 1px solid #e2e8f0;
 }
 .event-description {
   color: #334155;
@@ -893,6 +991,53 @@ header > h3 {
   }
 }
 @media (max-width: 768px) {
+  .custom-table td span.completed {
+    background-color: #10b981;
+    color: #fff;
+  }
+  .custom-table td span > span {
+    display: none;
+  }
+  .custom-table td span.progress {
+    background-color: #3b82f6;
+    color: #fff;
+  }
+  .right-nav {
+    flex-flow: column wrap;
+    width: 100%;
+  }
+  .right-nav > div {
+    flex: 100%;
+    width: 100%;
+  }
+  .right-nav > div:last-child > button:last-child {
+    padding: 10px 20px;
+  }
+  .right-nav > div button {
+    width: fit-content;
+  }
+  .right-nav > div small,
+  .right-nav select {
+    flex: 1;
+  }
+  .right-nav > div small {
+    flex-grow: 1.4;
+  }
+  .history > div {
+    flex-flow: column wrap;
+    gap: 30px;
+  }
+  .display {
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 15px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .display small {
+    padding: 0 !important;
+  }
   .events-modal > div:nth-child(3) {
     flex-flow: column wrap;
     gap: 10px;
@@ -1014,7 +1159,7 @@ header > h3 {
     display: block;
   }
   .header-mobile {
-    padding: 20px;
+    padding:0 20px;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #f1f5f9;
@@ -1043,7 +1188,8 @@ header > h3 {
     width: 100%;
   }
   .history input,
-  .history select {
+  .history select,
+  button {
     width: 100%;
   }
 }

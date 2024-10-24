@@ -1,27 +1,93 @@
 [
   {
-    "eventName": "Web Development Bootcamp",
-    "speakers": ["John Doe", "Alex Green"],
-    "date": "October 20, 2024",
+    "eventName": "New Year Coding Challenge",
+    "speakers": ["Alice Johnson", "Bob Smith"],
+    "date": "January 10, 2024",
     "status": "Completed",
-    "eventDescription": "A comprehensive bootcamp on modern web development tools and techniques.",
-    "attendees": ["Alice Johnson", "Bob Smith"]
+    "eventDescription": "Kick off the year with a coding challenge to test your problem-solving skills.",
+    "attendees": ["John Doe", "Emma Watson"],
+    "numberOfAttendees": 2,
+    "registrations": 120
+  },
+  {
+    "eventName": "Cloud Computing Seminar",
+    "speakers": ["Jane Smith", "Daniel Craig"],
+    "date": "February 14, 2024",
+    "status": "In Progress",
+    "eventDescription": "Learn the basics of cloud computing and how it's revolutionizing the tech industry.",
+    "attendees": ["Peter Parker", "Bruce Wayne"],
+    "numberOfAttendees": 2,
+    "registrations": 250
+  },
+  {
+    "eventName": "React Developers Meetup",
+    "speakers": ["Mark Zuckerberg", "Bill Gates"],
+    "date": "March 5, 2024",
+    "status": "In Progress",
+    "eventDescription": "A meetup for React developers to network and share their knowledge.",
+    "attendees": ["Clark Kent", "Diana Prince"],
+    "numberOfAttendees": 2,
+    "registrations": 300
   },
   {
     "eventName": "AI Conference 2024",
     "speakers": ["Jane Smith", "Emily Davis"],
-    "date": "November 12, 2024",
-    "status": "In Progress",
+    "date": "April 12, 2024",
+    "status": "Completed",
     "eventDescription": "An international conference on Artificial Intelligence and its future impact.",
-    "attendees": ["Diana Prince", "Bruce Wayne", "Clark Kent"]
+    "attendees": ["Tony Stark", "Steve Rogers"],
+    "numberOfAttendees": 2,
+    "registrations": 400
   },
   {
-    "eventName": "Blockchain Seminar",
-    "speakers": ["Samuel Lee", "Sophia Martinez"],
-    "date": "December 5, 2024",
+    "eventName": "Python Workshop",
+    "speakers": ["Guido van Rossum", "Elon Musk"],
+    "date": "May 20, 2024",
+    "status": "Completed",
+    "eventDescription": "A hands-on workshop for Python developers.",
+    "attendees": ["Natasha Romanoff", "Thor Odinson"],
+    "numberOfAttendees": 2,
+    "registrations": 180
+  },
+  {
+    "eventName": "Data Science Bootcamp",
+    "speakers": ["Pam Beesly", "Michael Scott"],
+    "date": "June 10, 2024",
     "status": "In Progress",
-    "eventDescription": "A seminar discussing the fundamentals and potential applications of blockchain technology.",
-    "attendees": ["Tony Stark", "Steve Rogers", "Natasha Romanoff"]
+    "eventDescription": "An immersive bootcamp for learning data science tools and techniques.",
+    "attendees": ["Jim Halpert", "Dwight Schrute"],
+    "numberOfAttendees": 2,
+    "registrations": 220
+  },
+  {
+    "eventName": "Startup Pitch Day",
+    "speakers": ["Reed Hastings", "Sheryl Sandberg"],
+    "date": "July 15, 2024",
+    "status": "Completed",
+    "eventDescription": "Entrepreneurs present their startup ideas to top investors.",
+    "attendees": ["Larry Page", "Sergey Brin"],
+    "numberOfAttendees": 2,
+    "registrations": 320
+  },
+  {
+    "eventName": "Blockchain Hackathon",
+    "speakers": ["Samuel Lee", "Sophia Martinez"],
+    "date": "August 5, 2024",
+    "status": "Completed",
+    "eventDescription": "A competitive hackathon focusing on building blockchain-based solutions.",
+    "attendees": ["Cyborg", "Vision"],
+    "numberOfAttendees": 2,
+    "registrations": 280
+  },
+  {
+    "eventName": "Web Development Bootcamp",
+    "speakers": ["John Doe", "Alex Green"],
+    "date": "September 20, 2024",
+    "status": "Completed",
+    "eventDescription": "A comprehensive bootcamp on modern web development tools and techniques.",
+    "attendees": ["Alice Johnson", "Bob Smith"],
+    "numberOfAttendees": 2,
+    "registrations": 150
   },
   {
     "eventName": "Design Thinking Workshop",
@@ -29,7 +95,9 @@
     "date": "October 15, 2024",
     "status": "Completed",
     "eventDescription": "A hands-on workshop exploring design thinking principles.",
-    "attendees": ["Peter Parker", "Wanda Maximoff", "Stephen Strange"]
+    "attendees": ["Peter Parker", "Wanda Maximoff"],
+    "numberOfAttendees": 2,
+    "registrations": 90
   },
   {
     "eventName": "Cybersecurity Awareness Day",
@@ -37,126 +105,128 @@
     "date": "November 20, 2024",
     "status": "In Progress",
     "eventDescription": "Learn how to protect yourself online with cybersecurity best practices.",
-    "attendees": ["Scott Lang", "Hope Van Dyne", "Hank Pym"]
+    "attendees": ["Scott Lang", "Hope Van Dyne"],
+    "numberOfAttendees": 2,
+    "registrations": 220
   },
   {
-    "eventName": "Data Science Summit",
-    "speakers": ["Michael Scott", "Pam Beesly"],
-    "date": "October 30, 2024",
-    "status": "Completed",
-    "eventDescription": "A summit for data science enthusiasts to discuss the latest trends and tools.",
-    "attendees": ["Jim Halpert", "Dwight Schrute", "Ryan Howard"]
-  },
-  {
-    "eventName": "Machine Learning Hackathon",
+    "eventName": "Machine Learning Summit",
     "speakers": ["Elon Musk", "Jeff Bezos"],
     "date": "December 1, 2024",
     "status": "In Progress",
-    "eventDescription": "A 48-hour hackathon focused on machine learning challenges.",
-    "attendees": ["Mark Zuckerberg", "Bill Gates", "Satya Nadella"]
+    "eventDescription": "An international summit focused on the latest trends in machine learning.",
+    "attendees": ["Mark Zuckerberg", "Bill Gates"],
+    "numberOfAttendees": 2,
+    "registrations": 350
   },
   {
-    "eventName": "Startup Pitch Competition",
-    "speakers": ["Reed Hastings", "Sheryl Sandberg"],
-    "date": "November 25, 2024",
-    "status": "In Progress",
-    "eventDescription": "Entrepreneurs pitch their startups to top investors.",
-    "attendees": ["Sundar Pichai", "Larry Page", "Sergey Brin"]
-  },
-  {
-    "eventName": "Robotics Expo 2024",
-    "speakers": ["Isaac Asimov", "Kara Danvers"],
-    "date": "December 15, 2024",
-    "status": "In Progress",
-    "eventDescription": "Explore the latest advancements in robotics and automation.",
-    "attendees": ["Cyborg", "Vision", "Bucky Barnes"]
-  },
-  {
-    "eventName": "Python Programming Marathon",
-    "speakers": ["Guido van Rossum", "Linus Torvalds"],
-    "date": "October 22, 2024",
+    "eventName": "Networking for Entrepreneurs",
+    "speakers": ["Warren Buffett", "Elon Musk"],
+    "date": "February 28, 2024",
     "status": "Completed",
-    "eventDescription": "A marathon coding event for Python enthusiasts.",
-    "attendees": ["Leonard Hofstadter", "Sheldon Cooper", "Raj Koothrappali"]
+    "eventDescription": "An event designed to connect entrepreneurs and investors.",
+    "attendees": ["Bruce Wayne", "Tony Stark"],
+    "numberOfAttendees": 2,
+    "registrations": 190
   },
   {
-    "eventName": "HealthTech Conference",
-    "speakers": ["Dr. Jane Foster", "Bruce Banner"],
-    "date": "November 10, 2024",
-    "status": "In Progress",
-    "eventDescription": "How technology is revolutionizing the healthcare industry.",
-    "attendees": ["T'Challa", "Shuri", "Okoye"]
-  },
-  {
-    "eventName": "AR/VR Development Seminar",
-    "speakers": ["Tony Stark", "Peter Parker"],
-    "date": "December 20, 2024",
-    "status": "In Progress",
-    "eventDescription": "Learn how to develop applications for Augmented and Virtual Reality.",
-    "attendees": ["Rhodey", "Pepper Potts", "Happy Hogan"]
-  },
-  {
-    "eventName": "Quantum Computing Conference",
-    "speakers": ["Dr. Strange", "Hank Pym"],
-    "date": "November 30, 2024",
-    "status": "In Progress",
-    "eventDescription": "An in-depth look into quantum computing and its potential.",
-    "attendees": ["Scott Lang", "Hope Van Dyne", "Luis"]
-  },
-  {
-    "eventName": "Green Energy Symposium",
-    "speakers": ["Bruce Banner", "Thor Odinson"],
-    "date": "December 3, 2024",
-    "status": "In Progress",
-    "eventDescription": "Discussing the future of renewable energy sources.",
-    "attendees": ["Loki", "Heimdall", "Sif"]
-  },
-  {
-    "eventName": "Marketing Strategies Workshop",
-    "speakers": ["Clark Kent", "Lois Lane"],
-    "date": "October 28, 2024",
+    "eventName": "JavaScript Masterclass",
+    "speakers": ["Kyle Simpson", "Addy Osmani"],
+    "date": "March 18, 2024",
     "status": "Completed",
-    "eventDescription": "Learn modern marketing techniques to boost your business.",
-    "attendees": ["Jimmy Olsen", "Lex Luthor", "Perry White"]
+    "eventDescription": "Master JavaScript with insights from industry experts.",
+    "attendees": ["Clark Kent", "Barry Allen"],
+    "numberOfAttendees": 2,
+    "registrations": 300
   },
   {
-    "eventName": "Product Design Workshop",
-    "speakers": ["Natasha Romanoff", "Steve Rogers"],
-    "date": "November 18, 2024",
-    "status": "In Progress",
-    "eventDescription": "How to design user-centered products with efficiency.",
-    "attendees": ["Sam Wilson", "Bucky Barnes", "Sharon Carter"]
-  },
-  {
-    "eventName": "Cloud Computing Bootcamp",
-    "speakers": ["Phil Coulson", "Maria Hill"],
-    "date": "October 26, 2024",
+    "eventName": "Tech for Social Good",
+    "speakers": ["Melinda Gates", "Susan Wojcicki"],
+    "date": "April 22, 2024",
     "status": "Completed",
-    "eventDescription": "A beginner's bootcamp on cloud technologies and platforms.",
-    "attendees": ["Nick Fury", "Carol Danvers", "Monica Rambeau"]
+    "eventDescription": "Discover how technology is being used to address social issues.",
+    "attendees": ["Steve Rogers", "Tony Stark"],
+    "numberOfAttendees": 2,
+    "registrations": 280
   },
   {
-    "eventName": "Mobile App Development Hackathon",
-    "speakers": ["Peter Parker", "Wanda Maximoff"],
-    "date": "November 7, 2024",
-    "status": "In Progress",
-    "eventDescription": "A hackathon focused on building innovative mobile applications.",
-    "attendees": ["Vision", "Quicksilver", "Hawkeye"]
+    "eventName": "Leadership in Tech",
+    "speakers": ["Satya Nadella", "Tim Cook"],
+    "date": "May 25, 2024",
+    "status": "Completed",
+    "eventDescription": "An event for aspiring leaders in the tech industry.",
+    "attendees": ["Wonder Woman", "Aquaman"],
+    "numberOfAttendees": 2,
+    "registrations": 210
   },
   {
-    "eventName": "DevOps & Automation Summit",
-    "speakers": ["Clint Barton", "Natasha Romanoff"],
-    "date": "December 8, 2024",
-    "status": "In Progress",
-    "eventDescription": "Learn about the latest trends in DevOps and automation.",
-    "attendees": ["Sam Wilson", "Bucky Barnes", "Wong"]
+    "eventName": "Startup Expo 2024",
+    "speakers": ["Jack Dorsey", "Evan Spiegel"],
+    "date": "June 15, 2024",
+    "status": "Completed",
+    "eventDescription": "Explore groundbreaking startups and innovative ideas.",
+    "attendees": ["Reed Richards", "Sue Storm"],
+    "numberOfAttendees": 2,
+    "registrations": 310
   },
   {
-    "eventName": "Digital Transformation Conference",
-    "speakers": ["Nick Fury", "T'Challa"],
-    "date": "November 13, 2024",
+    "eventName": "Digital Marketing Conference",
+    "speakers": ["Neil Patel", "Rand Fishkin"],
+    "date": "July 10, 2024",
+    "status": "Completed",
+    "eventDescription": "Stay up to date with the latest in digital marketing.",
+    "attendees": ["Hawkeye", "Black Widow"],
+    "numberOfAttendees": 2,
+    "registrations": 320
+  },
+  {
+    "eventName": "Tech for Sustainability",
+    "speakers": ["Greta Thunberg", "Al Gore"],
+    "date": "August 25, 2024",
+    "status": "Completed",
+    "eventDescription": "Explore how technology can contribute to a sustainable future.",
+    "attendees": ["Bruce Banner", "Peter Parker"],
+    "numberOfAttendees": 2,
+    "registrations": 290
+  },
+  {
+    "eventName": "Blockchain Seminar",
+    "speakers": ["Samuel Lee", "Sophia Martinez"],
+    "date": "September 30, 2024",
+    "status": "Completed",
+    "eventDescription": "A seminar discussing the fundamentals and potential applications of blockchain technology.",
+    "attendees": ["Scott Lang", "Hope Van Dyne"],
+    "numberOfAttendees": 2,
+    "registrations": 180
+  },
+  {
+    "eventName": "Virtual Reality Expo",
+    "speakers": ["Palmer Luckey", "Mark Zuckerberg"],
+    "date": "October 18, 2024",
+    "status": "Completed",
+    "eventDescription": "Dive into the world of VR with the latest innovations.",
+    "attendees": ["Tony Stark", "Peter Parker"],
+    "numberOfAttendees": 2,
+    "registrations": 200
+  },
+  {
+    "eventName": "Women in Tech Summit",
+    "speakers": ["Sheryl Sandberg", "Marissa Mayer"],
+    "date": "November 12, 2024",
     "status": "In Progress",
-    "eventDescription": "How businesses can leverage digital technologies for transformation.",
-    "attendees": ["Shuri", "Okoye", "M'Baku"]
+    "eventDescription": "Empowering women in technology with insights from industry leaders.",
+    "attendees": ["Jean Grey", "Wanda Maximoff"],
+    "numberOfAttendees": 2,
+    "registrations": 240
+  },
+  {
+    "eventName": "AI for Healthcare",
+    "speakers": ["Andrew Ng", "Fei-Fei Li"],
+    "date": "December 5, 2024",
+    "status": "In Progress",
+    "eventDescription": "A conference focused on the intersection of AI and healthcare.",
+    "attendees": ["Charles Xavier", "Doctor Strange"],
+    "numberOfAttendees": 2,
+    "registrations": 350
   }
 ]

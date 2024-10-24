@@ -8,10 +8,24 @@ const markBtn = document.querySelector("#mark");
 const rowsPerPageSelect = document.getElementById("rows-per-page");
 const searchBar = document.querySelector("#search");
 const totalRows = document.querySelector("#totalRows");
+const sortSelect = document.getElementById("sort-select");
+const exportBtn = document.getElementById("export-btn");
+
 let eventData = [];
 let currentPage = 1; // Track the current page
 let rowsPerPage = 10; // Number of rows per page
 let currIndex = null;
+
+//Sorting functionality
+sortSelect.addEventListener("change", (e) => {
+  const sortValue = e.target.value;
+  sortEvents(sortValue);
+});
+
+//export functionality
+exportBtn.addEventListener("click", function () {
+  exportToExcel(eventData);
+});
 
 rowsPerPageSelect.addEventListener("change", (e) => {
   rowsPerPage = parseInt(e.target.value); // Update rowsPerPage based on the selected value
@@ -78,7 +92,8 @@ function populateTableWithPagination(data, page) {
         <td class="mobile-hidden">${speakers}</td>
         <td>
           <span class="${event.status === "Completed" ? "completed" : "progress"}">
-            ${event.status}
+          <span class="${event.status === "Completed" ? "completed" : "progress"}"></span> 
+          ${event.status}
           </span>
         </td>
       </tr>`;
@@ -278,4 +293,60 @@ const showConfirmBox = (message, callback) => {
     confirmBox.classList.add("hidden");
     callback(false); // Execute the callback with 'false'
   };
+};
+const sortEvents = (sortValue) => {
+  let sortedData = [...eventData];
+
+  if (sortValue === "most-recent") {
+    // Sort by most recent date (assuming date is in a format JavaScript can parse)
+    sortedData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } else if (sortValue === "oldest") {
+    // Sort by oldest date
+    sortedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+  } else if (sortValue === "alphabetical") {
+    // Sort alphabetically by event name
+    sortedData.sort((a, b) => a.eventName.localeCompare(b.eventName));
+  } else if (sortValue === "in-progress") {
+    // Filter only 'In Progress' events
+    sortedData = sortedData.filter(
+      (event) => event.status.toLowerCase() === "in progress"
+    );
+  } else if (sortValue === "completed") {
+    // Filter only 'Completed' events
+    sortedData = sortedData.filter(
+      (event) => event.status.toLowerCase() === "completed"
+    );
+  }
+
+  populateTableWithPagination(sortedData, currentPage);
+  setupPagination(Math.ceil(sortedData.length / rowsPerPage));
+};
+const exportToExcel = (data) => {
+  // Convert eventData into an array of arrays suitable for Excel
+  const formattedData = data.map((event) => [
+    event.eventName, // Event name
+    event.date, // Date
+    event.speakers.join(", "), // Speakers
+    event.status, // Status
+    event.attendees.length, // Number of attendees
+  ]);
+
+  // Add a header row
+  formattedData.unshift([
+    "Event Name",
+    "Date",
+    "Speakers",
+    "Status",
+    "Attendees",
+  ]);
+
+  // Create a new workbook and worksheet
+  const workbook = XLSX.utils.book_new();
+  const worksheet = XLSX.utils.aoa_to_sheet(formattedData);
+
+  // Add the worksheet to the workbook
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Events");
+
+  // Create the Excel file and trigger download
+  XLSX.writeFile(workbook, "EventData.xlsx");
 };
